@@ -80,7 +80,7 @@ class FileStorage:
         """counts number of objects in storage matching a given class
            if cls is None, count al objects in storage"""
         if cls is None:
-            return len(self.__objects)
-        elif str(cls) not in classes:
+            return len(self.all())
+        elif cls not in classes.values():
             return 0
         return len(self.all(cls))
