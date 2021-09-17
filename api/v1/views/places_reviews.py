@@ -50,10 +50,10 @@ def delete_review_by_id(review_id):
                  strict_slashes=False)
 def create_new_review(place_id):
     """creates a 'Review' object"""
-    cnt = request.get_json()
     place = storage.get(Place, place_id)
     if place is None:
         abort(404)
+    cnt = request.get_json()
     if (not cnt):
         abort(400, 'Not a JSON')
     if ('user_id' not in cnt):
@@ -73,13 +73,13 @@ def create_new_review(place_id):
                  strict_slashes=False)
 def update_review_by_id(review_id):
     """updates a 'Review' object"""
-    cnt = request.get_json()
     review = storage.get(Review, review_id)
     if review is None:
         abort(404)
+    cnt = request.get_json()
     if (not cnt):
         abort(400, "Not a JSON")
-    for attr, value in cnt:
+    for attr, value in cnt.items():
         if (attr not in ["id", 'user_id', 'place_id',
                          "created_at", "updated_at"]):
             setattr(review, attr, value)
