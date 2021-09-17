@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""idk"""
+"""views module"""
 
 from flask import Blueprint
 
