@@ -23,7 +23,7 @@ def all_my_cities(state_id):
 
 @app_views.route('/cities/<string:city_id>', methods=['GET'],
                  strict_slashes=False)
-def get_state_by_id(city_id):
+def get_city_by_id(city_id):
     ''' Retrieve a state by it's id '''
     city = storage.get(City, city_id)
     if city is None:
@@ -33,7 +33,7 @@ def get_state_by_id(city_id):
 
 @app_views.route('/cities/<string:city_id>', methods=['DELETE'],
                  strict_slashes=False)
-def delete_state_by_id(city_id):
+def delete_city_by_id(city_id):
     """returns an empty dictionary with the status code 200
        if the <city_id> is not linked to any 'State', raise a 404 error"""
     city = storage.get(City, city_id)
@@ -46,7 +46,7 @@ def delete_state_by_id(city_id):
 
 @app_views.route('/states/<string:state_id>/cities', methods=['POST'],
                  strict_slashes=False)
-def create_new_state(state_id):
+def create_new_city(state_id):
     ''' so, you want a new one? '''
     state = storage.get(State, state_id)
     cnt = request.get_json()
@@ -62,7 +62,7 @@ def create_new_state(state_id):
 
 @app_views.route('cities/<string:city_id>', methods=['PUT'],
                  strict_slashes=False)
-def update_state_by_id(city_id):
+def update_city_by_id(city_id):
     """updates a'State' object"""
     city = storage.get(City, city_id)
     if city is None:
