@@ -56,8 +56,8 @@ def create_new_city(state_id):
         abort(400, 'Not a JSON')
     if ('name' not in cnt):
         abort(400, 'Missing name')
-    cnt['state_id'] = state.id
     city = City(**cnt)
+    city.state_id = state.id
     city.save()
     return make_response(jsonify(city.to_dict()), 201)
 
