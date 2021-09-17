@@ -10,8 +10,9 @@ from models.user import User
 from models import storage
 
 
-@app_views.route('/cities/<string:city_id>/places', methods=['GET'], strict_slashes=False)
-def all_my_users(city_id):
+@app_views.route('/cities/<string:city_id>/places', methods=['GET'],
+                 strict_slashes=False)
+def all_my_places(city_id):
     """retrieves the list of all 'Place' objects"""
     city = storage.get(City, city_id)
     if city is None:
@@ -46,7 +47,7 @@ def delete_place_by_id(place_id):
 
 
 @app_views.route('/cities/<string:city_id>/places', methods=['POST'],
-                  strict_slashes=False)
+                 strict_slashes=False)
 def create_new_place(city_id):
     """creates a 'Place' object"""
     cnt = request.get_json()
