@@ -50,7 +50,7 @@ def create_new_state():
     if ('name' not in cnt):
         abort(400, 'Missing name')
     state = State(**cnt)
-    storage.save()
+    state.save()
     return make_response(jsonify(state.to_dict()), 201)
 
 
@@ -67,4 +67,4 @@ def update_state_by_id(state_id):
         if (attr not in ["id", "created_at", "updated_at"]):
             setattr(state, attr, value)
     state.save()
-    return jsonify(state.to_dict)
+    return jsonify(state.to_dict())
