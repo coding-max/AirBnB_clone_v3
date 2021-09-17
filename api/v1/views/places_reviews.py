@@ -84,4 +84,4 @@ def update_review_by_id(review_id):
                          "created_at", "updated_at"]):
             setattr(review, attr, value)
     review.save()
-    return jsonify(review.to_dict())
+    return make_response(jsonify(review.to_dict()), 200)
