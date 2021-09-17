@@ -17,8 +17,10 @@ def all_my_cities(state_id):
     state = storage.get(State, state_id)
     if (not state):
         abort(404)
-    return make_response(json.dumps(state.cities),
-                        mimetype='application/json')
+    res = []
+    for city in state.cities:
+        res.append(city.to_dict())
+    return jsonify(res)
 
 
 @app_views.route('/cities/<string:city_id>', methods=['GET'],
