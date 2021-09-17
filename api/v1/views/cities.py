@@ -59,7 +59,7 @@ def create_new_city(state_id):
     city = City(**cnt)
     city.state_id = state.id
     city.save()
-    return jsonify(city.to_dict())
+    return make_response(jsonify(city.to_dict()), 201)
 
 
 @app_views.route('cities/<string:city_id>', methods=['PUT'],
@@ -75,4 +75,4 @@ def update_city_by_id(city_id):
         if (attr not in ["id", "created_at", "updated_at"]):
             setattr(city, attr, value)
     city.save()
-    return jsonify(city.to_dict())
+    return make_response(jsonify(city.to_dict()), 200)
