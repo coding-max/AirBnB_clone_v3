@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' Index module '''
+"""index module"""
 
 from flask import Flask, Blueprint, jsonify
 from api.v1.views import app_views
@@ -20,10 +20,12 @@ classes = {
     "users": User
 }
 
+
 @app_views.route('/status')
 def json_returned():
-    ''' Returns a Json '''
+    """returns a JSON: '"status": "OK"' """
     return jsonify(status="OK")
+
 
 @app_views.route('/stats')
 def stats():
