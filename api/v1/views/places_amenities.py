@@ -52,7 +52,7 @@ def link_amenity(place_id, amenity_id):
     """Links an 'Amenity' object to a 'Place'"""
     place = storage.get(Place, place_id)
     amenity = storage.get(Amenity, amenity_id)
-    if place is None or amenity is None:s
+    if place is None or amenity is None:
         abort(404)
     if getenv('HBNB_TYPE_STORAGE') == 'db':
         amenities = place.amenities
