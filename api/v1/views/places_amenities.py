@@ -10,9 +10,9 @@ from models.place import Place
 from models import storage
 
 
-@app_views.route('/places/<string:place_id>/amenities', methods=['GET'],
+@app_views.route('/places/<place_id>/amenities', methods=['GET'],
                  strict_slashes=False)
-def all_my_amenities(place_id):
+def all_place_amenities(place_id):
     """retrieves the list of all 'Amenity' objects for a given 'Place'"""
     place = storage.get(Place, place_id)
     if place is None:
@@ -27,9 +27,9 @@ def all_my_amenities(place_id):
     return jsonify(res)
 
 
-@app_views.route('/places/<string:place_id>/amenities/<string:amenity_id>',
+@app_views.route('/places/<place_id>/amenities/<amenity_id>',
                  methods=['DELETE'], strict_slashes=False)
-def delete_amenity_by_id(place_id, amenity_id):
+def delete_place_amenity(place_id, amenity_id):
     """deletes an 'Amenity' object to a 'Place'"""
     place = storage.get(Place, place_id)
     amenity = storage.get(Amenity, amenity_id)
@@ -46,7 +46,7 @@ def delete_amenity_by_id(place_id, amenity_id):
     return make_response(jsonify({}), 200)
 
 
-@app_views.route('/places/<string:place_id>/amenities/<string:amenity_id>',
+@app_views.route('/places/<place_id>/amenities/<amenity_id>',
                  methods=['POST'], strict_slashes=False)
 def link_amenity(place_id, amenity_id):
     """Links an 'Amenity' object to a 'Place'"""
